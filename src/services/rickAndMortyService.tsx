@@ -1,10 +1,10 @@
 import type { Location } from "react-router-dom";
-import type { Character } from "../types/character";
+import type { Character, CharacterResponse } from "../types/character";
 
 const urlCharacter: string = "https://rickandmortyapi.com/api/character";
 const urlLocation: string = "https://rickandmortyapi.com/api/location";
 
-export async function getFirst20Characters(): Promise<Character> {
+export async function getFirst20Characters(): Promise<CharacterResponse> {
     try {
         return await fetch(urlCharacter, { method: "GET" })
             .then(response => response.ok ? response.json() : Promise.reject(response))
@@ -15,7 +15,7 @@ export async function getFirst20Characters(): Promise<Character> {
     }
 }
 
-export async function get20CharactersFromPage(page: number): Promise<Character> {
+export async function get20CharactersFromPage(page: number): Promise<CharacterResponse> {
     try {
         return await fetch(urlCharacter + "?page=" + page, { method: "GET" })
             .then(response => response.ok ? response.json() : Promise.reject(response))
