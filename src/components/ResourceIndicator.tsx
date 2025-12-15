@@ -1,5 +1,7 @@
+import { useContext } from "react"
 
 const ResourceIndicatos = () => {
+    
     return (
         <>
             
