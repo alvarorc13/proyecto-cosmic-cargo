@@ -6,6 +6,16 @@ export interface Character {
   image: string;
 }
 
+export interface CharacterResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Character[];
+}
+ 
 export interface Location {
   name: string;
   url: string;

@@ -4,11 +4,14 @@ import HireCrew from "./pages/HireCrew"
 import Missions from "./pages/Missions"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/Layout'
+import GlobalProvider from './context/ShipProvider';
 
   const Router = () => {
     return(
       <>
-        <BrowserRouter>
+        <GlobalProvider>
+
+          <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="home" replace/>} />
@@ -19,6 +22,8 @@ import Layout from './components/Layout'
             </Route>
           </Routes>
         </BrowserRouter>
+        
+        </GlobalProvider>
       </>
     )
   }
