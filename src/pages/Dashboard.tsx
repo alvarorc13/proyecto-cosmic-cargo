@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { GlobalContext } from "../context/ShipContext"
 import { type Character } from '../types/character';
 import CharacterCard from '../components/CharacterCard';
+import { Link } from "react-router-dom";
 
 
 export default function Dashboard() {
@@ -25,7 +26,10 @@ export default function Dashboard() {
 
                 {characters.length == 0 ? (
                     <div className="alert alert-danger text-center" role="alert">
-                        🚨 ¡La nave no tiene tripulantes! Contrátalos en la Cantina.
+                        <Link to="/hirecrew" className="alert-link">
+                            🚨 ¡La nave no tiene tripulantes! Contrátalos en la Cantina.
+                        </Link>
+
                     </div>
                 ) : (
                     characters.map((character: Character) => (
