@@ -21,11 +21,17 @@ export interface Location {
   url: string;
 }
 
+export interface LocationResponse {
+  results: Location[];
+}
+
 export interface GlobalContextType {
   credit: number;
   fuel: number;
   characters: Character[];
+  locations: Location[];
   modifyMoney: (money: number) => void;
   reduceFuel: () => void;
   addCharacter: (character: Character) => void;
+  addLocation: (location: Location) => void;
 }
