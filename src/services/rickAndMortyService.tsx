@@ -4,7 +4,7 @@ import type { Character } from "../types/character";
 const urlCharacter: string = "https://rickandmortyapi.com/api/character";
 const urlLocation: string = "https://rickandmortyapi.com/api/location";
 
-export async function getFirst20Characters(): Promise</*Character*/any> {
+export async function getFirst20Characters(): Promise<Character> {
     try {
         return await fetch(urlCharacter, { method: "GET" })
             .then(response => response.ok? response.json(): Promise.reject(response))
