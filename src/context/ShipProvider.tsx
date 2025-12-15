@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GlobalContext } from "./ShipContext";
 import type { Character } from "../types/character";
+import type { Location } from "../types/character";
 
 export default function GlobalProvider({ children }: { children: React.ReactNode }) {
   const ReduceFuel = 10;
@@ -8,6 +9,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   const [credit, setCredit] = useState<number>(1000);
   const [fuel, setFuel] = useState<number>(100);
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [locations, setLocations] = useState<Location[]>([]);
 
   function modifyMoney(money: number) {
     setCredit(prev => prev + money);
@@ -29,9 +31,17 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
     }
   }
 
+  function addLocation(location: Location) {
+    if (!locations.some((l) => l.name === location.name)) {
+      setLocations([...locations, location]);
+    } else {
+      throw new Error("No puede haber localizaciones repetidas");
+    }
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ credit, fuel, characters, modifyMoney, reduceFuel, addCharacter }}
+      value={{ credit, fuel, characters, locations, modifyMoney, reduceFuel, addCharacter, addLocation }}
     >
       {children}
     </GlobalContext.Provider>
