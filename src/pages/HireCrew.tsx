@@ -60,9 +60,9 @@ export default function HireCrew() {
         <>
             <div className="cantina-bg">
                 <div className="container pt-4">
-                    <div className="titulo-cantina"><h1>Cantina</h1> <input type="text" className="form-contro mb-3" placeholder="Introduce el nombre del personaje" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
+                    <div className="titulo-cantina"><h1>Cantina</h1> <input type="text" className="search-cantina" placeholder="Introduce el nombre del personaje" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
 
-                    
+
 
                     <div className="div-cantina">
                         <div className="row">
@@ -75,17 +75,21 @@ export default function HireCrew() {
                                 return (
 
                                     <div key={character.id} className="col-md-3 mb-4">
-                                        <CharacterCard character={character} />
-                                        <Button text={isHired ? "Descontratar" : (isFull ? "Tripulación Llena" : "Contratar")} onClick={() => {
-                                            if (isHired) {
-                                                global?.removeCharacter(character);
-                                                global?.modifyMoney(100);
-                                            }
-                                            else {
-                                                handleHire(character);
-                                            }
-                                        }}
-                                            disabled={isDead || (!isHired && isFull) || (!isHired && noMoney)}></Button>
+                                        <div className="card-wrapper">
+                                            <CharacterCard character={character} />
+                                            <div className="button-wrapper">
+                                                <Button text={isHired ? "Descontratar" : (isFull ? "Tripulación Llena" : "Contratar")} onClick={() => {
+                                                    if (isHired) {
+                                                        global?.removeCharacter(character);
+                                                        global?.modifyMoney(100);
+                                                    }
+                                                    else {
+                                                        handleHire(character);
+                                                    }
+                                                }}
+                                                    disabled={isDead || (!isHired && isFull) || (!isHired && noMoney)}></Button>
+                                            </div>
+                                        </div>
 
                                     </div>
 
