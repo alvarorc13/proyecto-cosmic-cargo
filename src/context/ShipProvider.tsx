@@ -22,6 +22,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   function addCharacter(character: Character) {
     if (characters.length < 4) {
       if (!characters.some((c) => c.id === character.id)) {
+        localStorage.setItem('crew', JSON.stringify([...characters, character]));
         setCharacters([...characters, character]);
       } else {
         throw new Error("No puede haber tripulantes repetidos");

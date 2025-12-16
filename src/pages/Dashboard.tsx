@@ -13,6 +13,8 @@ export default function Dashboard() {
 
     const { fuel, characters } = context;
 
+    const charactersLocalStorage : Character[] = JSON.parse(localStorage.getItem('crew') || '[]');
+
     return(
         <>
             <div className="container mt-4">
@@ -24,7 +26,7 @@ export default function Dashboard() {
                     </div>
                 )}
 
-                {characters.length == 0 ? (
+                {charactersLocalStorage.length == 0 ? (
                     <div className="alert alert-danger text-center" role="alert">
                         <Link to="/hirecrew" className="alert-link">
                             🚨 ¡La nave no tiene tripulantes! Contrátalos en la Cantina.
@@ -32,7 +34,7 @@ export default function Dashboard() {
 
                     </div>
                 ) : (
-                    characters.map((character: Character) => (
+                    charactersLocalStorage.map((character: Character) => (
                         <CharacterCard character={character} />
                     ))
                 )}
