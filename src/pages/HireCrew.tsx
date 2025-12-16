@@ -51,9 +51,10 @@ export default function HireCrew() {
         }
     }
 
-    const creditLocalStorage = localStorage.getItem('credit') ? JSON.parse(localStorage.getItem('credit') as string) : global?.credit;
-    const totalCharacters: number = JSON.parse(localStorage.getItem('crew') || '[]').length;
+    // const creditLocalStorage = localStorage.getItem('credit') ? JSON.parse(localStorage.getItem('credit') as string) : global?.credit;
+    // const totalCharacters: number = JSON.parse(localStorage.getItem('crew') || '[]').length;
 
+    const totalCharacters = global?.characters.length ?? 0;
 
     return (
         <>
@@ -67,13 +68,24 @@ export default function HireCrew() {
                         {filterCharacter.map((character) => {
                             const isDead = character.status.toLowerCase() === "dead";
                             const isFull = totalCharacters === 4;
-                            const noMoney = (creditLocalStorage ?? 0) < 200;
+                            const noMoney = (global?.credit ?? 0) < 200;
+                            const isHired = global?.characters.some((c) => c.id === character.id);
 
                             return (
 
                                 <div key={character.id} className="col-md-3 mb-4">
                                     <CharacterCard character={character} />
-                                    <Button text={isFull ? "Tripulación Llena" : "Contratar"} onClick={() => handleHire(character)} disabled={isDead || isFull || noMoney}></Button>
+                                    <Button text={isHired ? "Descontratar" : (isFull ? "Tripulación Llena" : "Contratar")} onClick={() => {
+                                        if (isHired) {
+                                            global?.removeCharacter(character);
+                                            global?.modifyMoney(200);
+                                        }
+                                        else {
+                                            handleHire(character);
+                                        }
+                                    }}
+                                        disabled={isDead || (!isHired && isFull) || noMoney}></Button>
+
                                 </div>
 
                             )
