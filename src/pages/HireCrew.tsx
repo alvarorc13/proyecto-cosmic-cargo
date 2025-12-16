@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import type { Character } from "../types/character";
-import { get20CharactersFromPage, getFirst20Characters } from "../services/rickAndMortyService";
+import { getFirst20Characters } from "../services/rickAndMortyService";
 import { GlobalContext } from "../context/ShipContext";
 import CharacterCard from "../components/CharacterCard";
 import Button from "../components/Button";
@@ -19,16 +19,7 @@ export default function HireCrew() {
         async function loadCharacters() {
             try{
                 const data = await getFirst20Characters();
-                const totalPages = data.info.pages;
-
-                const allResults = [...data.results];
-
-                for(let page = 2; page <= totalPages; page++){
-                    const response = await get20CharactersFromPage(page);
-                    allResults.push(...response.results);
-                }
-
-                setCharacters(allResults);
+                setCharacters(data.results);
             }
             catch (error){
                 console.error(error)
