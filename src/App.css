@@ -66,43 +66,7 @@
 
 
 
-.resourceBadge {
-  background: #202329 ;
-  border: 3px solid #97ce4c; 
-  border-radius: 8px;
-  padding: 10px;
-  width: 240px;
-  color: #fff;
-}
 
-#img {
-  width: 45px;
-  height: 45px;
-  border: 2px solid #00b0c8; 
-  border-radius: 50%;
-  background: #1a1a1a;
-}
-
-.resourceBadge span {
-  font-family: monospace;
-  font-weight: bold;
-  color: #97ce4c;
-}
-
-.resourceBadge .bg-gray-700 {
-  background-color: #3d3e44 ;
-  height: 8px ;
-}
-
-.resourceBadge .bg-yellow-400 {
-  background-color: #f0e14a ; 
-  box-shadow: 0 0 8px #f0e14a;
-}
-
-.resourceBadge .bg-cyan-400 {
-  background-color: #00b0c8; 
-  box-shadow: 0 0 8px #00b0c8;
-}
 
 .cantina-bg {
   min-height: 100vh;

@@ -2,6 +2,7 @@ import { Link, Outlet } from 'react-router-dom'
 import ResourceBadge from './ResourceIndicator'
 import { useContext } from 'react';
 import { GlobalContext } from '../context/ShipContext';
+import '../CSS/header.css'
 
 export function Layout() {
 

@@ -1,0 +1,100 @@
+.resourceBadge {
+  background: #202329;
+  border: 3px solid #97ce4c; 
+  border-radius: 8px;
+  padding: 10px;
+  width: 260px;          
+  color: #fff;
+  
+ 
+  display: flex;
+  align-items: center;   
+  gap: 15px;          
+}
+
+#img {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #00b0c8; 
+  border-radius: 50%;
+  background: #1a1a1a;
+ 
+}
+
+
+.resourceBadge .info-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 5px;
+  flex-grow: 1;
+}
+
+.resourceBadge span {
+  font-family: monospace;
+  font-weight: bold;
+  color: #97ce4c;
+  font-size: 14px;
+}
+
+
+.resourceBadge .bg-gray-700 {
+  background-color: #3d3e44;
+  height: 8px;
+  border-radius: 4px;
+        
+  width: 100%;
+}
+
+.resourceBadge .bg-yellow-400 {
+  background-color: #f0e14a; 
+  box-shadow: 0 0 8px #f0e14a;
+  height: 100%;
+}
+
+.resourceBadge .bg-cyan-400 {
+  background-color: #00b0c8; 
+  box-shadow: 0 0 8px #00b0c8;
+  height: 100%;
+}
+
+:root {
+  --green: #97ce4c;
+  --cyan: #00b0c8;
+  --yellow: #f0e14a;
+  --dark: #202329;
+}
+
+.navbar.navbar-dark.bg-dark {
+background-color: (var(--dark));
+    border-bottom: 3px solid var(--green);
+  box-shadow: 0 0 15px rgba(151, 206, 76, 0.3);
+}
+
+.navbar-brand {
+  color: var(--cyan);
+  font-family: monospace;
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.nav-link {
+  font-family: monospace;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--green);
+  text-shadow: 0 0 8px var(--green);
+}
+
+
+#img {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.navbar-toggler {
+  border-color: var(--green);
+}
