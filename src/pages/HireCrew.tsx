@@ -50,6 +50,10 @@ export default function HireCrew() {
         }
     }
 
+    const creditLocalStorage = localStorage.getItem('credit') ? JSON.parse(localStorage.getItem('credit') as string) : global?.credit;
+    const totalCharacters : number = JSON.parse(localStorage.getItem('crew') || '[]').length;
+
+
     return(
         <>
             <div className="container mt-4">
@@ -60,8 +64,8 @@ export default function HireCrew() {
                 <div className="row">
                     {filterCharacter.map((character) => {
                         const isDead = character.status.toLowerCase() === "dead";
-                        const isFull = global?.characters.length === 4;
-                        const noMoney = (global?.credit ?? 0) < 200;
+                        const isFull = totalCharacters === 4;
+                        const noMoney = (creditLocalStorage ?? 0) < 200;
 
                         return (
 

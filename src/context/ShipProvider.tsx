@@ -12,11 +12,13 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   const [locations, setLocations] = useState<Location[]>([]);
 
   function modifyMoney(money: number) {
-    setCredit(prev => prev + money);
+    localStorage.setItem('credit', JSON.stringify(credit + money));
+    setCredit(credit + money);
   }
 
   function reduceFuel() {
-    setFuel(prev => prev - ReduceFuel);
+    localStorage.setItem('fuel', JSON.stringify(fuel - ReduceFuel));
+    setFuel(fuel - ReduceFuel);
   }
 
   function addCharacter(character: Character) {
