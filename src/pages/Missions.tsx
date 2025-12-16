@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../context/ShipContext"
 import { getFirst20Locations } from "../services/rickAndMortyService";
+import "../CSS/missions.css";
 
 export default function Missions() {
 
@@ -59,30 +60,30 @@ export default function Missions() {
 
    return (
         <>
-            <div className="/**/">
-                <h1>Elige una misión</h1>
+            <div className="missions-bg">
+                <h1 className="title">Elige una misión</h1>
+
+                <div className="div-general-missions">
 
                 {fuel >= 10 ? (
                     <form onSubmit={(event) => handleSubmit(event)}>
-                        <select required onChange={handleCharacter} id="selectCharacter" className="form-select" value={character}>
+                        <select required onChange={handleCharacter} id="selectCharacter" className="selectMissions" value={character}>
                             <option value="">Selecciona un tripulante...</option>
                             {characters.map((c, index) => (
                                 <option key={index} value={c.name}>{c.name}</option>
                             ))}
                         </select>
 
-                        <select required onChange={handleLocation} id="selectLocation" className="form-select" value={location}>
+                        <select required onChange={handleLocation} id="selectLocation" className="selectMissions" value={location}>
                             <option value="">Selecciona un planeta...</option>
                             {locations.map((l, index) => (
                                 <option key={index} value={l.name}>{l.name}</option>
                             ))}
                         </select>
 
-                        <div className="col-12">
-                            <button type="submit" className="btn btn-primary">
-                                Iniciar Misión
-                            </button>
-                        </div>
+                        <button type="submit" className="fantasy-button">
+                            Iniciar Misión
+                        </button>
                     </form>
                 ) : (
                     <div className="alert-no-fuel" style={{color: 'red', padding: '10px'}}>
@@ -90,8 +91,9 @@ export default function Missions() {
                     </div>
                 )}
 
-                <div className="/**/">
-                    <p>Actualmente el combustible es: {fuel} y los créditos: {credit}</p>
+                    <div className="state">
+                        <p>Actualmente el combustible es: {fuel}⛽ y los créditos: {credit}💲</p>
+                    </div>
                 </div>
             </div>
 
@@ -117,4 +119,3 @@ export default function Missions() {
         </>
     )
 }
-               
