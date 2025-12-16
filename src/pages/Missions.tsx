@@ -30,6 +30,7 @@ export default function Missions() {
 
     const [character, setCharacter] = useState<string>("");
     const [location, setLocation] = useState<string>("");
+    const [isTravelling, setIsTravelling] = useState(false); // 👈 nuevo estado
 
     function handleCharacter(event: React.ChangeEvent<HTMLSelectElement>) {
         setCharacter(event.target.value);
@@ -41,13 +42,21 @@ export default function Missions() {
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+
+        // Activamos el mensaje
+        setIsTravelling(true);
+
         setTimeout(() => {
             context?.reduceFuel();
             context?.modifyMoney(Math.floor(Math.random() * (500 - 50 + 1)) + 50);
+
+            // Ocultamos el mensaje
+            setIsTravelling(false);
+
+            setCharacter("");
+            setLocation("");
+            alert("El tripulante " + character + " ha completado exitosamente la misión a " + location);
         }, 3000);
-        setCharacter("");
-        setLocation("");
-        alert("El tripulante " + character + " ha completado exitosamente la misión a " + location);
     }
 
     return(
@@ -81,6 +90,26 @@ export default function Missions() {
                     <p>Actualmente el combustible es: {fuel} y los créditos: {credit}</p>
                 </div>
             </div>
+
+            {isTravelling && (
+                <div
+                    style={{
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        background: "rgba(0,0,0,0.8)",
+                        color: "white",
+                        padding: "20px",
+                        borderRadius: "8px",
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        zIndex: 9999
+                    }}
+                >
+                    🚀 Realizando un viaje...
+                </div>
+            )}
         </>
     )
 }
