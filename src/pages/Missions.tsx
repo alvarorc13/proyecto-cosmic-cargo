@@ -30,7 +30,7 @@ export default function Missions() {
 
     const [character, setCharacter] = useState<string>("");
     const [location, setLocation] = useState<string>("");
-    const [isTravelling, setIsTravelling] = useState(false); // 👈 nuevo estado
+    const [isTravelling, setIsTravelling] = useState(false);
 
     function handleCharacter(event: React.ChangeEvent<HTMLSelectElement>) {
         setCharacter(event.target.value);
@@ -43,14 +43,12 @@ export default function Missions() {
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        // Activamos el mensaje
         setIsTravelling(true);
 
         setTimeout(() => {
             context?.reduceFuel();
             context?.modifyMoney(Math.floor(Math.random() * (500 - 50 + 1)) + 50);
 
-            // Ocultamos el mensaje
             setIsTravelling(false);
 
             setCharacter("");
