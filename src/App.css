@@ -7,6 +7,48 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+
+.character-card:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow:
+    0 0 40px rgba(200, 140, 255, 0.7),
+    0 0 80px rgba(255, 120, 220, 0.6);
+}
+
+
+.character-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 180, 255, 0.2),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.character-card:hover::before {
+  opacity: 1;
+}
+
+
+.character-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 16px;
+  object-fit: cover;
+  filter: drop-shadow(0 0 14px rgba(255, 160, 255, 0.5));
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 .character-image {
   width: 100%;
 }
@@ -34,5 +76,87 @@
 .custom-button:disabled {
   background-color: #a5b4fc;
   cursor: not-allowed;
+}
+
+.cantina-bg {
+  min-height: 100vh;
+
+  background-image: url("./assets/cantinaBg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.fantasy-button {
+  position: relative;
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 180, 255, 0.6);
+  background: linear-gradient(
+    135deg,
+    #7b2cff,
+    #c77dff,
+    #ff9adf
+  );
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px rgba(180, 120, 255, 0.5),
+    0 0 25px rgba(255, 120, 220, 0.4);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-position 0.6s ease;
+  overflow: hidden;
+  background-size: 200% 200%;
+}
+
+/* Efecto hover */
+.fantasy-button:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 0 20px rgba(200, 140, 255, 0.7),
+    0 0 45px rgba(255, 120, 220, 0.6);
+  background-position: right center;
+}
+
+
+/* Brillo animado */
+.fantasy-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.fantasy-button:hover::before {
+  opacity: 1;
+}
+
+/* Estado deshabilitado */
+.fantasy-button:disabled {
+  background: linear-gradient(
+    135deg,
+    #a5b4fc,
+    #c7c7c7
+  );
+  color: #eeeeee;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 

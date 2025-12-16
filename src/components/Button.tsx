@@ -6,7 +6,7 @@ interface ButtonProps {
 
 function Button({ text, disabled = false, onClick }: ButtonProps) {
   return (
-    <button disabled={disabled} onClick={onClick}>
+    <button className="fantasy-button" disabled={disabled} onClick={onClick}>
       {text}
     </button>
   );
