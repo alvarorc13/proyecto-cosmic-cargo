@@ -107,7 +107,6 @@
   background-size: 200% 200%;
 }
 
-/* Efecto hover */
 .fantasy-button:hover:not(:disabled) {
   transform: translateY(-3px) scale(1.05);
   box-shadow:
@@ -117,7 +116,6 @@
 }
 
 
-/* Brillo animado */
 .fantasy-button::before {
   content: "";
   position: absolute;
@@ -136,7 +134,7 @@
   opacity: 1;
 }
 
-/* Estado deshabilitado */
+
 .fantasy-button:disabled {
   background: linear-gradient(
     135deg,
