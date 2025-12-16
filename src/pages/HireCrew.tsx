@@ -3,6 +3,7 @@ import type { Character } from "../types/character";
 import { get20CharactersFromPage, getFirst20Characters } from "../services/rickAndMortyService";
 import { GlobalContext } from "../context/ShipContext";
 import CharacterCard from "../components/CharacterCard";
+import Button from "../components/Button";
 
 export default function HireCrew() {
 
@@ -61,7 +62,8 @@ export default function HireCrew() {
 
     return(
         <>
-            <div className="container mt-4">
+            <div className="cantina-bg">
+                <div className="container pt-4">
                 <h1>Cantina</h1>
 
                 <input type="text" className="form-contro mb-3" placeholder="Introduce el nombre del personaje" value={search} onChange={(e) => setSearch(e.target.value)} />
@@ -76,7 +78,7 @@ export default function HireCrew() {
 
                             <div key={character.id} className="col-md-3 mb-4">
                                 <CharacterCard character={character} />
-                                <button className="btn btn-primary mt-2" onClick={() => handleHire(character)} disabled={isDead || isFull || noMoney}>Contratar</button>
+                                <Button text={isFull ? "Tripulación Llena" : "Contratar"} onClick={() => handleHire(character)} disabled={isDead || isFull || noMoney}/>
                             </div>
 
                         )
@@ -88,6 +90,7 @@ export default function HireCrew() {
                     <p>Créditos: {global?.credit}</p>
                 </div>
                 
+            </div>
             </div>
         </>
     )
