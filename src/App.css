@@ -35,3 +35,13 @@
   background-color: #a5b4fc;
   cursor: not-allowed;
 }
+
+.cantina-bg {
+  min-height: 100vh;
+
+  background-image: url("./assets/cantinaBg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
