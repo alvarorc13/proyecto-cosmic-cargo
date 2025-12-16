@@ -68,14 +68,14 @@ export default function Missions() {
                 {fuel >= 10 ? (
                     <form onSubmit={(event) => handleSubmit(event)}>
                         <select required onChange={handleCharacter} id="selectCharacter" className="selectMissions" value={character}>
-                            <option value="">Selecciona un tripulante...</option>
+                            <option disabled value="">Selecciona un tripulante...</option>
                             {characters.map((c, index) => (
                                 <option key={index} value={c.name}>{c.name}</option>
                             ))}
                         </select>
 
                         <select required onChange={handleLocation} id="selectLocation" className="selectMissions" value={location}>
-                            <option value="">Selecciona un planeta...</option>
+                            <option disabled value="">Selecciona un planeta...</option>
                             {locations.map((l, index) => (
                                 <option key={index} value={l.name}>{l.name}</option>
                             ))}
