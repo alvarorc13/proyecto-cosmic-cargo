@@ -57,32 +57,38 @@ export default function Missions() {
         }, 3000);
     }
 
-    return(
+   return (
         <>
             <div className="/**/">
                 <h1>Elige una misión</h1>
 
-                <form onSubmit={(event) => handleSubmit(event)}>
-                    <select onChange={(event) => handleCharacter(event)} id="selectCharacter" className="form-select" value={character}>
-                        <option value="">Selecciona un tripulante...</option>
-                        {characters.map((c, index) => (
-                        <option key={index} value={c.name}>{c.name}</option>
-                        ))}
-                    </select>
+                {fuel >= 10 ? (
+                    <form onSubmit={(event) => handleSubmit(event)}>
+                        <select required onChange={handleCharacter} id="selectCharacter" className="form-select" value={character}>
+                            <option value="">Selecciona un tripulante...</option>
+                            {characters.map((c, index) => (
+                                <option key={index} value={c.name}>{c.name}</option>
+                            ))}
+                        </select>
 
-                    <select onChange={(event) => handleLocation(event)} id="selectLocation" className="form-select" value={location}>
-                        <option value="">Selecciona un planeta...</option>
-                        {locations.map((l, index) => (
-                        <option key={index} value={l.name}>{l.name}</option>
-                        ))}
-                    </select>
+                        <select required onChange={handleLocation} id="selectLocation" className="form-select" value={location}>
+                            <option value="">Selecciona un planeta...</option>
+                            {locations.map((l, index) => (
+                                <option key={index} value={l.name}>{l.name}</option>
+                            ))}
+                        </select>
 
-                    <div className="col-12">
-                        <button type="submit" className="btn btn-primary">
-                            Iniciar Misión
-                        </button>
+                        <div className="col-12">
+                            <button type="submit" className="btn btn-primary">
+                                Iniciar Misión
+                            </button>
+                        </div>
+                    </form>
+                ) : (
+                    <div className="alert-no-fuel" style={{color: 'red', padding: '10px'}}>
+                        <p>⚠️ Te has quedado sin gasolina. No es posible realizar misiones.</p>
                     </div>
-                </form>
+                )}
 
                 <div className="/**/">
                     <p>Actualmente el combustible es: {fuel} y los créditos: {credit}</p>
@@ -111,3 +117,4 @@ export default function Missions() {
         </>
     )
 }
+               
