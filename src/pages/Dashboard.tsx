@@ -11,7 +11,7 @@ export default function Dashboard() {
     
     if(!context) return null;
 
-    const { fuel, characters } = context;
+    const { fuel } = context;
 
     const charactersLocalStorage : Character[] = JSON.parse(localStorage.getItem('crew') || '[]');
 
