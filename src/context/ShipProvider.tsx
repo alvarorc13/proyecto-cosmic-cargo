@@ -56,6 +56,12 @@ export default function GlobalProvider({
     setCharacters([...characters, character]);
   }
 
+  function removeCharacter(character: Character) {
+    const updatedCrew = characters.filter((c) => c.id !== character.id);
+    setCharacters(updatedCrew);
+    localStorage.setItem('crew', JSON.stringify(updatedCrew));
+  }
+
   function addLocation(location: Location) {
     if (!locations.some((l) => l.name === location.name)) {
       setLocations([...locations, location]);
@@ -73,6 +79,7 @@ export default function GlobalProvider({
         reduceFuel,
         addCharacter,
         addLocation,
+        removeCharacter,
       }}
     >
       {children}
