@@ -78,13 +78,13 @@ export default function HireCrew() {
                                     <Button text={isHired ? "Descontratar" : (isFull ? "Tripulación Llena" : "Contratar")} onClick={() => {
                                         if (isHired) {
                                             global?.removeCharacter(character);
-                                            global?.modifyMoney(200);
+                                            global?.modifyMoney(100);
                                         }
                                         else {
                                             handleHire(character);
                                         }
                                     }}
-                                        disabled={isDead || (!isHired && isFull) || noMoney}></Button>
+                                        disabled={isDead || (!isHired && isFull) || (!isHired && noMoney)}></Button>
 
                                 </div>
 
