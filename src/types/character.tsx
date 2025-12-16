@@ -34,4 +34,5 @@ export interface GlobalContextType {
   reduceFuel: () => void;
   addCharacter: (character: Character) => void;
   addLocation: (location: Location) => void;
+  buyFuel: () => void;
 }

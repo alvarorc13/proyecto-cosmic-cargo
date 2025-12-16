@@ -47,6 +47,16 @@ export default function GlobalProvider({
     setFuel(fuel - ReduceFuel);
   }
 
+  function buyFuel() {
+  if (credit >= 100) {
+    setCredit(prev => prev - 100);
+    setFuel(100);
+  } else {
+    throw new Error("No tienes suficientes créditos para comprar combustible");
+  }
+}
+
+
   function addCharacter(character: Character) {
     if (characters.length >= 4)
       throw new Error("Ya hay 4 tripulantes en la nave");
