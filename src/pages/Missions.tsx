@@ -21,7 +21,6 @@ export default function Missions() {
                     context?.addLocation(location);
                 });
 
-                console.log("Localizaciones cargadas:", context?.locations);
             } catch (error) {
                 console.error(error);
             }
@@ -29,51 +28,88 @@ export default function Missions() {
         loadLocations();
     }, [context]);
 
-    const [selectedCharacter, setSelectedCharacter] = useState<string>("");
-    const [selectedLocation, setSelectedLocation] = useState<string>("");
+    const [character, setCharacter] = useState<string>("");
+    const [location, setLocation] = useState<string>("");
+    const [isTravelling, setIsTravelling] = useState(false); // 👈 nuevo estado
 
-    function handleCharacter(event: Event) {
-        /*setSelectedCharacter(event?.target?.value);*/
+    function handleCharacter(event: React.ChangeEvent<HTMLSelectElement>) {
+        setCharacter(event.target.value);
     }
 
-    function handleLocation(event: Event) {
-        /*setSelectedLocation(event?.target?.value);*/
+    function handleLocation(event: React.ChangeEvent<HTMLSelectElement>) {
+        setLocation(event.target.value);
     }
 
-    function handleSubmit() {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        // Activamos el mensaje
+        setIsTravelling(true);
+
         setTimeout(() => {
             context?.reduceFuel();
-            context?.modifyMoney(100);
+            context?.modifyMoney(Math.floor(Math.random() * (500 - 50 + 1)) + 50);
+
+            // Ocultamos el mensaje
+            setIsTravelling(false);
+
+            setCharacter("");
+            setLocation("");
+            alert("El tripulante " + character + " ha completado exitosamente la misión a " + location);
         }, 3000);
     }
 
     return(
         <>
-            <h1>Elige una misión</h1>
+            <div className="/**/">
+                <h1>Elige una misión</h1>
 
-            <form onSubmit={handleSubmit}>
-                <select /*onChange={handleCharacter}*/ id="role" className="form-select">
-                    <option value="">Selecciona un tripulante...</option>
-                    {characters.map((c, index) => (
-                    <option key={index} value={c.name}>{c.name}</option>
-                    ))}
-                </select>
+                <form onSubmit={(event) => handleSubmit(event)}>
+                    <select onChange={(event) => handleCharacter(event)} id="selectCharacter" className="form-select" value={character}>
+                        <option value="">Selecciona un tripulante...</option>
+                        {characters.map((c, index) => (
+                        <option key={index} value={c.name}>{c.name}</option>
+                        ))}
+                    </select>
 
-                <select /*onChange={handleLocation}*/ id="role" className="form-select">
-                    <option value="">Selecciona un planeta...</option>
-                    {locations.map((l, index) => (
-                    <option key={index} value={l.name}>{l.name}</option>
-                    ))}
-                </select>
+                    <select onChange={(event) => handleLocation(event)} id="selectLocation" className="form-select" value={location}>
+                        <option value="">Selecciona un planeta...</option>
+                        {locations.map((l, index) => (
+                        <option key={index} value={l.name}>{l.name}</option>
+                        ))}
+                    </select>
 
-                <div className="col-12">
-                    <button type="submit" className="btn btn-primary">
-                        Iniciar Misión
-                    </button>
+                    <div className="col-12">
+                        <button type="submit" className="btn btn-primary">
+                            Iniciar Misión
+                        </button>
+                    </div>
+                </form>
+
+                <div className="/**/">
+                    <p>Actualmente el combustible es: {fuel} y los créditos: {credit}</p>
                 </div>
-            </form>
+            </div>
 
-            <p>Actualmente el combustible es: {fuel} y los créditos: {credit}</p>
+            {isTravelling && (
+                <div
+                    style={{
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        background: "rgba(0,0,0,0.8)",
+                        color: "white",
+                        padding: "20px",
+                        borderRadius: "8px",
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        zIndex: 9999
+                    }}
+                >
+                    🚀 Realizando un viaje...
+                </div>
+            )}
         </>
     )
 }

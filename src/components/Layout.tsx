@@ -11,7 +11,6 @@ export function Layout() {
       if(!context) return null;
   
       const { fuel, credit } = context;
-
       
   return (
     <>
