@@ -1,0 +1,66 @@
+.dashboard-bg {
+  min-height: 100vh;
+
+  background-image: url("../assets/DashboardBg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.div-general { 
+    position: relative;
+    margin: 2rem auto; 
+    padding: 2rem; 
+    border: 4px solid #97ce4c; 
+    border-radius: 12px; 
+    color: #e0ffe0; 
+    box-shadow: 0 0 8px #00ff99; 
+    max-width: 1500px; 
+    overflow: hidden; 
+} 
+
+.div-general::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0;
+    background: radial-gradient(circle at center, #202329 0%, #202329 100%); 
+    opacity: 0.85;
+    z-index: 0;
+}
+
+.div-general .alert-link {
+  color: #00ffff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.div-general .character-card {
+  background-color: #202329;
+  border: 1px solid #00ffff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.div-general .character-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+.mb-4 {
+  background-color: #202329;
+  color: #00b0c8;  
+  border: 4px solid #97ce4c;
+  text-align: center;  
+  padding: 1rem;
+  border-radius: 8px;            
+  text-shadow: 0 0 8px #00b0c8;
+  box-shadow: 0 0 8px #00ff99;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: monospace;
+
+}
