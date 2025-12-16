@@ -49,6 +49,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
+}
 .character-image {
   width: 100%;
 }
