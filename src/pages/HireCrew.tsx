@@ -39,7 +39,7 @@ export default function HireCrew() {
                 if(global.credit < 200){
                     throw new Error("No hay suficientes créditos para contratar a este personaje.");
                 }
-                else{
+                else {
                     global.addCharacter(character);
                     global.modifyMoney(-200);
                 }
