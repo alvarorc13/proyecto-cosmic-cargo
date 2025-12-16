@@ -59,8 +59,6 @@ export default function GlobalProvider({
   function addLocation(location: Location) {
     if (!locations.some((l) => l.name === location.name)) {
       setLocations([...locations, location]);
-    } else {
-      throw new Error("No puede haber localizaciones repetidas");
     }
   }
 
