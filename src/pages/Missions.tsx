@@ -21,6 +21,7 @@ export default function Missions() {
                     context?.addLocation(location);
                 });
 
+                console.log("Localizaciones cargadas:", context?.locations);
             } catch (error) {
                 console.error(error);
             }
@@ -28,41 +29,37 @@ export default function Missions() {
         loadLocations();
     }, [context]);
 
-    const [character, setCharacter] = useState<string>("");
-    const [location, setLocation] = useState<string>("");
+    const [selectedCharacter, setSelectedCharacter] = useState<string>("");
+    const [selectedLocation, setSelectedLocation] = useState<string>("");
 
-    function handleCharacter(event: React.ChangeEvent<HTMLSelectElement>) {
-        setCharacter(event.target.value);
+    function handleCharacter(event: Event) {
+        /*setSelectedCharacter(event?.target?.value);*/
     }
 
-    function handleLocation(event: React.ChangeEvent<HTMLSelectElement>) {
-        setLocation(event.target.value);
+    function handleLocation(event: Event) {
+        /*setSelectedLocation(event?.target?.value);*/
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
+    function handleSubmit() {
         setTimeout(() => {
             context?.reduceFuel();
-            context?.modifyMoney(Math.floor(Math.random() * (500 - 50 + 1)) + 50);
+            context?.modifyMoney(100);
         }, 3000);
-        setCharacter("");
-        setLocation("");
-        alert("El tripulante " + character + " ha completado exitosamente la misión a " + location);
     }
 
     return(
         <>
             <h1>Elige una misión</h1>
 
-            <form onSubmit={(event) => handleSubmit(event)}>
-                <select onChange={(event) => handleCharacter(event)} id="selectCharacter" className="form-select" value={character}>
+            <form onSubmit={handleSubmit}>
+                <select /*onChange={handleCharacter}*/ id="role" className="form-select">
                     <option value="">Selecciona un tripulante...</option>
                     {characters.map((c, index) => (
                     <option key={index} value={c.name}>{c.name}</option>
                     ))}
                 </select>
 
-                <select onChange={(event) => handleLocation(event)} id="selectLocation" className="form-select" value={location}>
+                <select /*onChange={handleLocation}*/ id="role" className="form-select">
                     <option value="">Selecciona un planeta...</option>
                     {locations.map((l, index) => (
                     <option key={index} value={l.name}>{l.name}</option>
