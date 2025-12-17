@@ -61,7 +61,9 @@ export default function Missions() {
    return (
         <>
             <div className="missions-bg">
-                <h1 className="title">Elige una misión</h1>
+                <div className="missionsTitle">
+                    <h1>Elige una misión</h1>
+                </div>
 
                 <div className="div-general-missions">
 
