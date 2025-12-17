@@ -47,6 +47,10 @@ export default function GlobalProvider({
     setFuel(fuel - ReduceFuel);
   }
 
+  function addFuel(fuelAdded: number) {
+    setFuel(fuel + fuelAdded);
+  }
+
   function addCharacter(character: Character) {
     if (characters.length >= 4)
       throw new Error("Ya hay 4 tripulantes en la nave");
@@ -59,12 +63,24 @@ export default function GlobalProvider({
   function removeCharacter(character: Character) {
     const updatedCrew = characters.filter((c) => c.id !== character.id);
     setCharacters(updatedCrew);
-    localStorage.setItem('crew', JSON.stringify(updatedCrew));
+    localStorage.setItem("crew", JSON.stringify(updatedCrew));
   }
 
   function addLocation(location: Location) {
     if (!locations.some((l) => l.name === location.name)) {
       setLocations([...locations, location]);
+    }
+  }
+
+  function refuelTank() {
+    const fuelNeeded = 100 - fuel;
+    const creditNeeded = (fuelNeeded / 10) * 50;
+    if (creditNeeded <= credit) {
+      modifyMoney(-creditNeeded);
+      addFuel(fuelNeeded);
+    } else {
+      addFuel((credit * 100) / 500);
+      modifyMoney(-credit);
     }
   }
 
@@ -80,6 +96,8 @@ export default function GlobalProvider({
         addCharacter,
         addLocation,
         removeCharacter,
+        addFuel,
+        refuelTank
       }}
     >
       {children}
