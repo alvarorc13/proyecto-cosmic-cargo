@@ -92,8 +92,10 @@ export default function Missions() {
                 ) : (
                     <div className="alert-no-fuel" style={{color: 'red', padding: '10px'}}>
                         <p>⚠️ Te has quedado sin gasolina. No es posible realizar misiones.</p>
+                        <a href="/">Dirigete al puente de mando para repostar</a>
                     </div>
                 )}
+
 
                     <div className="state">
                         <p>Actualmente el combustible es: {fuel}⛽ y los créditos: {credit}💲</p>

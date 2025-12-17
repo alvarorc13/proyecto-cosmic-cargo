@@ -35,4 +35,6 @@ export interface GlobalContextType {
   addCharacter: (character: Character) => void;
   addLocation: (location: Location) => void;
   removeCharacter: (character: Character) => void;
+  addFuel: (fuelAdded : number) => void;
+  refuelTank : () => void;
 }
