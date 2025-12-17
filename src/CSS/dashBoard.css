@@ -32,9 +32,10 @@
 }
 
 .div-general .alert-link {
-  color: #00ffff;
+  color: #000000;
   text-decoration: underline;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .div-general .character-card {
