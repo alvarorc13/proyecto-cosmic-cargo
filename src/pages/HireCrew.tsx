@@ -58,13 +58,13 @@ export default function HireCrew() {
 
     return (
         <>
-            <div className="cantina-bg">
+            <div className="canteen-bg">
                 <div className="container pt-4">
-                    <div className="titulo-cantina"><h1>Cantina</h1> <input type="text" className="search-cantina" placeholder="Introduce el nombre del personaje" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
+                    <div className="title-canteen"><h1>Cantina</h1> <input type="text" className="search-canteen" placeholder="Introduce el nombre del personaje" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
 
 
 
-                    <div className="div-cantina">
+                    <div className="div-canteen">
                         <div className="row">
                             {filterCharacter.map((character) => {
                                 const isDead = character.status.toLowerCase() === "dead";
