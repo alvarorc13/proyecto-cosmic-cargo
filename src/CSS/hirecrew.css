@@ -1,4 +1,4 @@
-.cantina-bg {
+.canteen-bg {
   min-height: 100vh;
   background-image: url("../assets/CantinaBg2.png");
   background-size: cover;
@@ -9,7 +9,7 @@
 }
 
 
-.div-cantina { 
+.div-canteen { 
     position: relative;
     padding: 2rem;
     border: 4px solid #97ce4c;
@@ -20,7 +20,7 @@
     overflow: hidden; 
 } 
 
-.div-cantina::before {
+.div-canteen::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -29,7 +29,7 @@
   z-index: 0;
 }
 
-.div-cantina .character-card {
+.div-canteen .character-card {
   background-color: #202329;
   border: 1px solid #00ffff;
   border-radius: 10px;
@@ -39,7 +39,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.titulo-cantina {
+.title-canteen {
   background-color: #202329;
   color: #00b0c8;  
   border: 4px solid #97ce4c;
@@ -55,7 +55,7 @@
 
 }
 
-.search-cantina {
+.search-canteen {
   width: 100%;
   max-width: 600px;
   padding: 0.8rem 1rem;
@@ -69,12 +69,12 @@
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.search-cantina::placeholder {
+.search-canteen::placeholder {
   color: #97ce4c;
   opacity: 0.8;
 }
 
-.search-cantina:focus {
+.search-canteen:focus {
   border-color: #00b0c8;
   box-shadow: 0 0 12px #00b0c8;
 }
