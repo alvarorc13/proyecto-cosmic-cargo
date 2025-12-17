@@ -3,7 +3,7 @@ import ResourceBadge from './ResourceIndicator'
 import { useContext } from 'react';
 import { GlobalContext } from '../context/ShipContext';
 import '../CSS/header.css'
-import resuourceIcon from '../assets/Gemini_Generated_Image_nizm1gnizm1gnizm-removebg-preview.png';
+import resourceIcon from '../assets/Gemini_Generated_Image_nizm1gnizm1gnizm-removebg-preview.png';
 
 export function Layout() {
 
@@ -21,7 +21,7 @@ export function Layout() {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <ResourceBadge icon={resuourceIcon} fuel={fuel} credit={credit}/>
+          <ResourceBadge icon={resourceIcon} fuel={fuel} credit={credit}/>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
