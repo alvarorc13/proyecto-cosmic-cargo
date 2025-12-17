@@ -41,6 +41,8 @@ export default function Missions() {
         setLocation(event.target.value);
     }
 
+    let result: String = "";
+
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
@@ -54,20 +56,22 @@ export default function Missions() {
 
             setCharacter("");
             setLocation("");
-            alert("El tripulante " + character + " ha completado exitosamente la misión a " + location);
+
+            result = `El tripulante ${character} ha completado exitosamente la misión a ${location}`;
         }, 3000);
     }
 
    return (
         <>
-        <body className="missions-bg">
+        <div className="missions-bg">
 
-            
+            <div className="container pt-4">
+
                 <div className="missionsTitle">
                     <h1>Elige una misión</h1>
                 </div>
 
-                <div className="div-general-missions">
+                <div className="div-missions">
 
                 {fuel >= 10 ? (
                     <form onSubmit={(event) => handleSubmit(event)}>
@@ -90,36 +94,29 @@ export default function Missions() {
                         </button>
                     </form>
                 ) : (
-                    <div className="alert-no-fuel" style={{color: 'red', padding: '10px'}}>
+                    <div className="stateNoFuel" style={{color: 'red', padding: '10px'}}>
                         <p>⚠️ Te has quedado sin gasolina. No es posible realizar misiones.</p>
                         <a href="/">Dirigete al puente de mando para repostar</a>
                     </div>
                 )}
 
+                    {result !== ""?
+                    <div className="state">
+                        <p>{result}</p>
+                    </div>
+                    : <span></span>
+                }
 
                     <div className="state">
                         <p>Actualmente el combustible es: {fuel}⛽ y los créditos: {credit}💲</p>
                     </div>
                 </div>
             
-        </body>
+            </div>
+        </div>
 
             {isTravelling && (
-                <div
-                    style={{
-                        position: "fixed",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        background: "rgba(0,0,0,0.8)",
-                        color: "white",
-                        padding: "20px",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        fontSize: "1.5rem",
-                        zIndex: 9999
-                    }}
-                >
+                <div className="loadingTrip">
                     🚀 Realizando un viaje...
                 </div>
             )}
