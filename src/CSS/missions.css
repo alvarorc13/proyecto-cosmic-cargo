@@ -105,7 +105,11 @@ form {
   font-family: monospace;
   font-size: 1.1rem;
   color: #ff0000;
-  text-shadow: 0 0 6px #e46429;
+  text-shadow: 0 0 6px #e46429; 
+}
+
+.stateNoFuel a{
+  text-decoration: none;
 }
 
 alert{
