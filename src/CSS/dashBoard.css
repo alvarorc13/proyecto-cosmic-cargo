@@ -32,7 +32,7 @@
 }
 
 .div-general .alert-link {
-  color: #000000;
+  color: #ffcccc;
   text-decoration: underline;
   font-weight: 600;
   text-decoration: none;
@@ -138,4 +138,25 @@
   text-shadow: 0 0 6px #ff0033;
   font-family: monospace;
   letter-spacing: 1px;
+}
+
+.alert-no-crews {
+  background-color: #2a0000;
+  border: 3px solid #ff0033;
+  color: #ffcccc;
+  text-align: center;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  max-width: 800px;
+  box-shadow: 0 0 12px #ff0033;
+  text-shadow: 0 0 6px #ff0033;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.alert-no-crews link {
+  color: #e0ffe0;
 }

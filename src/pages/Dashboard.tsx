@@ -27,10 +27,12 @@ export default function Dashboard() {
 
           <div className="div-general">
             {characters.length === 0 ? (
-              <div className="alert alert-danger text-center" role="alert">
-                <Link to="/hirecrew" className="alert-link">
-                  🚨 ¡La nave no tiene tripulantes! Contrátalos en la Cantina.
-                </Link>
+              <div className="alert text-center">
+                <div className="alert-no-crews">
+                    <Link to="/hirecrew" className="alert-link">
+                    🚨 ¡La nave no tiene tripulantes! Contrátalos en la Cantina.
+                    </Link>
+                </div>
               </div>
             ) : (
               characters.map((character: Character) => (
