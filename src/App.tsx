@@ -1,9 +1,7 @@
-import { useState } from 'react'
 import './App.css'
 import './CSS/dashBoard.css'
-import './CSS/hireCrew.css'
+import './CSS/hirecrew.css'
 import Router  from './Router'
-import CharacterCard from './components/CharacterCard'
 
 
 
