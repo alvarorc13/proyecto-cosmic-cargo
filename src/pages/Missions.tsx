@@ -60,7 +60,9 @@ export default function Missions() {
 
    return (
         <>
-            <div className="missions-bg">
+        <body className="missions-bg">
+
+            
                 <div className="missionsTitle">
                     <h1>Elige una misión</h1>
                 </div>
@@ -97,7 +99,8 @@ export default function Missions() {
                         <p>Actualmente el combustible es: {fuel}⛽ y los créditos: {credit}💲</p>
                     </div>
                 </div>
-            </div>
+            
+        </body>
 
             {isTravelling && (
                 <div
