@@ -4,12 +4,11 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
-  z-index: 0;
+  background-attachment: fixed;
 }
 
-.missionsTitle{
-  margin-top: 10px;
+.missionsTitle {
+  margin: 20px auto 10px auto;
   background-color: #202329;
   color: #00b0c8;
   border: 4px solid #97ce4c;
@@ -21,10 +20,11 @@
   font-weight: bold;
   letter-spacing: 2px;
   font-family: monospace;
-  margin-bottom: 10px;
+  max-width: 1500px;
+  width: 100%;
 }
 
-.div-general-missions {
+.div-missions {
   position: relative;
   margin: 2rem auto;
   padding: 2rem;
@@ -35,9 +35,10 @@
   max-width: 1500px;
   z-index: 1;
   overflow: hidden;
+  margin-top: 10px;
 }
 
-.div-general-missions::before {
+.div-missions::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -46,7 +47,7 @@
   z-index: 0;
 }
 
-.div-general-missions > * {
+.div-missions > * {
   position: relative;
   z-index: 1;
 }
@@ -58,7 +59,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* separación uniforme entre elementos */
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -96,4 +97,31 @@ form {
   font-size: 1.1rem;
   color: #00ffff;
   text-shadow: 0 0 6px #00ffff;
+}
+
+.stateNoFuel{
+  margin-top: 2rem;
+  text-align: center;
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: #ff0000;
+  text-shadow: 0 0 6px #e46429;
+}
+
+alert{
+  background-color: red;
+}
+
+.loadingTrip{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.5rem;
+  z-index: 9999;
 }
