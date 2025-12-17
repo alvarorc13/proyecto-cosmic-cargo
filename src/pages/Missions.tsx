@@ -32,6 +32,7 @@ export default function Missions() {
     const [character, setCharacter] = useState<string>("");
     const [location, setLocation] = useState<string>("");
     const [isTravelling, setIsTravelling] = useState(false);
+    const [isMissionSuccess, setIsMissionSuccess] = useState(false);
 
     function handleCharacter(event: React.ChangeEvent<HTMLSelectElement>) {
         setCharacter(event.target.value);
@@ -40,8 +41,6 @@ export default function Missions() {
     function handleLocation(event: React.ChangeEvent<HTMLSelectElement>) {
         setLocation(event.target.value);
     }
-
-    let result: String = "";
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -54,11 +53,19 @@ export default function Missions() {
 
             setIsTravelling(false);
 
-            setCharacter("");
-            setLocation("");
+            if (!isTravelling) {
+                setIsMissionSuccess(true);
 
-            result = `El tripulante ${character} ha completado exitosamente la misión a ${location}`;
+                setTimeout(() => {
+                    setIsMissionSuccess(false);
+
+                    setCharacter("");
+                    setLocation("");
+                }, 5000);
+            }
+
         }, 3000);
+
     }
 
    return (
@@ -100,15 +107,14 @@ export default function Missions() {
                     </div>
                 )}
 
-                    {result !== ""?
-                    <div className="state">
-                        <p>{result}</p>
-                    </div>
-                    : <span></span>
-                }
+                    {isMissionSuccess && (
+                        <div className="state">
+                            <p>El/La tripulante {character} ha completado exitosamente la misión a {location}</p>
+                        </div>
+                    )}
 
                     <div className="state">
-                        <p>Actualmente el combustible es: {fuel}⛽ y los créditos: {credit}💲</p>
+                            <p>Actualmente el combustible es: {fuel}⛽ y los créditos: {credit}💲</p>
                     </div>
                 </div>
             
